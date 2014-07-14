@@ -45,7 +45,8 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
 
-    self.maskView = [[PFMaskView alloc] initWithFrame:self.tableView.frame];
+    if (!self.maskView)
+        self.maskView = [[PFMaskView alloc] initWithFrame:self.tableView.frame];
     self.maskView.delegate = self;
 }
 
@@ -89,6 +90,7 @@
 {
     [self.textField resignFirstResponder];
     [self.maskView maskViewHidden];
+    self.maskView = nil;
 }
 
 #pragma mark - Memory Management Methods

@@ -90,7 +90,6 @@
 {
     [self.textField resignFirstResponder];
     [self.maskView maskViewHidden];
-    self.maskView = nil;
 }
 
 #pragma mark - Memory Management Methods

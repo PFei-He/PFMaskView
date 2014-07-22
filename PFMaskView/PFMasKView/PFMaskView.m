@@ -49,17 +49,19 @@
         CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
         self.frame = frame;
     }
-
+    
     //打开用户交互
     self.userInteractionEnabled = YES;
-
-    //设置背景颜色
-    if (self.color) self.backgroundColor = self.color;
-    else self.backgroundColor = [UIColor clearColor];
 
     //点击手势
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     [self addGestureRecognizer:recognizer];
+}
+
+//设置背景颜色
+- (void)setColor:(UIColor *)color
+{
+    self.backgroundColor = color;
 }
 
 //点击屏幕时回调代理方法

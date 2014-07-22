@@ -17,7 +17,6 @@
 
 @implementation PFMaskView
 
-@synthesize color = _color;
 @synthesize delegate = _delegate;
 
 @synthesize isShow = _isShow;
@@ -56,12 +55,6 @@
     //点击手势
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     [self addGestureRecognizer:recognizer];
-}
-
-//设置背景颜色
-- (void)setColor:(UIColor *)color
-{
-    self.backgroundColor = color;
 }
 
 //点击屏幕时回调代理方法

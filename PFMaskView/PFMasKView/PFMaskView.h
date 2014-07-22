@@ -19,9 +19,6 @@
 
 @interface PFMaskView : UIView
 
-///设置MaskView的背景颜色
-@property (nonatomic, strong) UIColor *color;
-
 ///代理
 @property (nonatomic, assign) id<PFMaskViewDelegate> delegate;
 

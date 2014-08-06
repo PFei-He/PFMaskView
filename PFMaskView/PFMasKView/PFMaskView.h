@@ -23,6 +23,12 @@
 @property (nonatomic, assign) id<PFMaskViewDelegate> delegate;
 
 /**
+ *  @brief 初始化MaskView
+ *  @param usingBlock: 是否使用block方法
+ */
+- (instancetype)initWithFrame:(CGRect)frame usingBlock:(BOOL)usingBlock;
+
+/**
  *  @brief 显示MaskView
  */
 - (void)maskViewShowInView:(UIView *)view;
@@ -44,6 +50,9 @@
  */
 -(void)maskViewHidden;
 
-
+/**
+ *  @brief MasKView被点击
+ */
+- (void)maskViewDidTappedUsingBlock:(void (^)(id sender))sender;
 
 @end

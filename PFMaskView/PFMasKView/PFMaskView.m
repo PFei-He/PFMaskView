@@ -79,13 +79,13 @@ typedef void(^PFMaskViewBlock)(id sender);
 //显示MaskView，覆盖于上方
 - (void)maskViewShowInView:(UIView *)view aboveSubview:(UIView *)siblingSubview
 {
-    [view insertSubview:self aboveSubview:siblingSubview];
+    [self insertSubview:view aboveSubview:siblingSubview];
 }
 
 //显示MaskView，覆盖于下方
 - (void)maskViewShowInView:(UIView *)view belowSubview:(UIView *)siblingSubview
 {
-    [view insertSubview:self belowSubview:siblingSubview];
+    [self insertSubview:view belowSubview:siblingSubview];
 }
 
 //显示MaskView

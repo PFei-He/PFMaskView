@@ -46,8 +46,16 @@
     [self.view addSubview:self.tableView];
 
     if (!self.maskView)
-        self.maskView = [[PFMaskView alloc] initWithFrame:self.tableView.frame];
-    self.maskView.delegate = self;
+        self.maskView = [[PFMaskView alloc] initWithFrame:self.tableView.frame usingBlock:YES];
+
+    //设置代理
+//    self.maskView.delegate = self;
+
+    //点击Mask View
+    [self.maskView maskViewDidTappedUsingBlock:^(id sender) {
+        [self.textField resignFirstResponder];
+        [self.maskView maskViewHidden];
+    }];
 }
 
 #pragma mark - UITextFieldDelegate Methods
@@ -86,11 +94,12 @@
 
 #pragma mark - PFMaskViewDelegate Methods
 
-- (void)maskViewDidTapped:(id)tapped
-{
-    [self.textField resignFirstResponder];
-    [self.maskView maskViewHidden];
-}
+//点击Mask View
+//- (void)maskViewDidTapped:(id)tapped
+//{
+//    [self.textField resignFirstResponder];
+//    [self.maskView maskViewHidden];
+//}
 
 #pragma mark - Memory Management Methods
 

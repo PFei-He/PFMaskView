@@ -10,6 +10,8 @@
 
 @protocol PFMaskViewDelegate <NSObject>
 
+@optional
+
 /**
  *  @brief MasKView被点击
  */

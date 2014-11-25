@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "PFMaskView.h"
 
-@interface Demo : UIViewController <UITextFieldDelegate, UITableViewDataSource, PFMaskViewDelegate>
+@interface Demo : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, PFMaskViewDelegate>
 
 @end

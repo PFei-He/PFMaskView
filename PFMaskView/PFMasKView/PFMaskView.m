@@ -8,119 +8,86 @@
 
 #import "PFMaskView.h"
 
-typedef void(^PFMaskViewBlock)(id sender);
+typedef void(^tapBlock)();
 
 @interface PFMaskView ()
 
-///是否被显示
-@property (nonatomic, assign) BOOL isShow;
-
-@property (nonatomic, copy) PFMaskViewBlock block;
+///点击事件
+@property (nonatomic, copy) tapBlock block;
 
 @end
 
 @implementation PFMaskView
 
-@synthesize delegate = _delegate;
-
-@synthesize isShow = _isShow;
-
 #pragma mark - Initialization
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self layoutSubviews:CGRectZero usingBlock:NO];
-    }
-    return self;
-}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self layoutSubviews:frame usingBlock:NO];
+        [self layoutSubviews:frame];
     }
     return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame usingBlock:(BOOL)usingBlock
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self layoutSubviews:frame usingBlock:usingBlock];
-    }
-    return self;
-}
+#pragma mark - Private Mathods
 
-#pragma mark - Mask View Management
-
-//设置MaskView
-- (void)layoutSubviews:(CGRect)frame usingBlock:(BOOL)usingBlock
+//设置覆盖层
+- (void)layoutSubviews:(CGRect)frame
 {
     if (frame.size.height) {
         self.frame = frame;
     } else {
-        CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-        self.frame = frame;
+        self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);;
     }
-    
-    //打开用户交互
-    self.userInteractionEnabled = YES;
 
     //点击手势
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] init];
-    if (usingBlock) [recognizer addTarget:self action:@selector(tappedUsingBlock:)];
-    else [recognizer addTarget:self action:@selector(tapped:)];
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     [self addGestureRecognizer:recognizer];
 }
 
-//显示MaskView，覆盖于上方
-- (void)maskViewShowInView:(UIView *)view aboveSubview:(UIView *)siblingSubview
-{
-    [self insertSubview:view aboveSubview:siblingSubview];
-}
+#pragma mark - Public Mathods
 
-//显示MaskView，覆盖于下方
-- (void)maskViewShowInView:(UIView *)view belowSubview:(UIView *)siblingSubview
+//显示覆盖层
+- (void)showInView:(UIView *)view
 {
-    [self insertSubview:view belowSubview:siblingSubview];
-}
-
-//显示MaskView
-- (void)maskViewShowInView:(UIView *)view
-{
-    self.isShow = YES;
     if (!view) [[UIApplication sharedApplication].delegate.window.rootViewController.view addSubview:self];
     else [view addSubview:self];
 }
 
-//隐藏MaskView
-- (void)maskViewHidden
+//隐藏覆盖层
+- (void)hidden
 {
     [self removeFromSuperview];
 }
 
+//覆盖层被点击
+- (void)didTappedUsingBlock:(void (^)())block
+{
+    if (block) self.block = block, block = nil;
+}
+
 #pragma mark - Events Management
 
-//点击屏幕时回调代理方法
-- (void)tapped:(id)sender
+//点击事件
+- (void)tapped:(UIGestureRecognizer *)recognizer
 {
-    if (self.delegate &&[self.delegate respondsToSelector:@selector(maskViewDidTapped:)])
-        [self.delegate maskViewDidTapped:self];
+    if ([self.delegate respondsToSelector:@selector(maskViewDidTapped)]) {//监听代理并回调
+        [self.delegate maskViewDidTapped];
+    } else if (self.block) {//监听块并回调
+        self.block();
+    }
 }
 
-//点击屏幕时回调块方法
-- (void)tappedUsingBlock:(id)sender
-{
-    if (self.block) self.block(sender);
-}
+#pragma mark - Memory Management
 
-//MasKView被点击
-- (void)maskViewDidTappedUsingBlock:(void (^)(id))sender
+- (void)dealloc
 {
-    self.block = sender;
+#if __has_feature(objc_arc)
+    self.block      = nil;
+    self.delegate   = nil;
+#else
+#endif
 }
 
 /*

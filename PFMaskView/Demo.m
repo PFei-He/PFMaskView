@@ -43,33 +43,36 @@
 
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height)];
     self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
 
-    if (!self.maskView)
-        self.maskView = [[PFMaskView alloc] initWithFrame:self.tableView.frame usingBlock:YES];
-
-    //设置代理
-//    self.maskView.delegate = self;
-
-    //点击Mask View
-    [self.maskView maskViewDidTappedUsingBlock:^(id sender) {
+    //覆盖层
+    if (!self.maskView) self.maskView = [[PFMaskView alloc] initWithFrame:self.tableView.frame];
+    self.maskView.delegate = self;
+    self.maskView.backgroundColor = [UIColor cyanColor];
+/*
+    //点击覆盖层
+    [self.maskView didTappedUsingBlock:^{
         [self.textField resignFirstResponder];
-        [self.maskView maskViewHidden];
+        [self.maskView hidden];
     }];
+ */
 }
 
 #pragma mark - UITextFieldDelegate Methods
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self.maskView maskViewShowInView:self.tableView];
+    [self.maskView showInView:self.tableView];
     [self.textField becomeFirstResponder];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self.maskView maskViewShowInView:self.tableView];
-    [self.textField resignFirstResponder];
+    self.maskView.frame = CGRectMake(scrollView.contentOffset.x, scrollView.contentOffset.y, self.maskView.frame.size.width, self.maskView.frame.size.height);
+//    self.maskView.center = CGPointMake(scrollView.contentOffset.x + self.maskView.frame.size.width * 0.5, scrollView.contentOffset.y + self.maskView.frame.size.height * 0.5);
 }
 
 #pragma mark - UITableViewDataSource Methods
@@ -91,16 +94,16 @@
 {
     return 20;
 }
-
+///*
 #pragma mark - PFMaskViewDelegate Methods
 
-//点击Mask View
-//- (void)maskViewDidTapped:(id)tapped
-//{
-//    [self.textField resignFirstResponder];
-//    [self.maskView maskViewHidden];
-//}
-
+//点击覆盖层
+- (void)maskViewDidTapped
+{
+    [self.textField resignFirstResponder];
+    [self.maskView hidden];
+}
+//*/
 #pragma mark - Memory Management Methods
 
 - (void)didReceiveMemoryWarning

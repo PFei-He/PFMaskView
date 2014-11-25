@@ -13,48 +13,30 @@
 @optional
 
 /**
- *  @brief MasKView被点击
+ *  @brief 覆盖层被点击
  */
-- (void)maskViewDidTapped:(id)tapped;
+- (void)maskViewDidTapped;
 
 @end
 
 @interface PFMaskView : UIView
 
 ///代理
-@property (nonatomic, assign) id<PFMaskViewDelegate> delegate;
+@property (nonatomic, weak) id<PFMaskViewDelegate> delegate;
 
 /**
- *  @brief 初始化MaskView
- *  @param usingBlock: 是否使用block方法
+ *  @brief 显示覆盖层（设置为nil时显示于所有视图的最上层）
  */
-- (instancetype)initWithFrame:(CGRect)frame usingBlock:(BOOL)usingBlock;
+- (void)showInView:(UIView *)view;
 
 /**
- *  @brief 显示MaskView
+ *  @brief 隐藏覆盖层
  */
-- (void)maskViewShowInView:(UIView *)view;
+-(void)hidden;
 
 /**
- *  @brief 显示MaskView
- *  @details 覆盖于上方
+ *  @brief 覆盖层被点击
  */
--(void)maskViewShowInView:(UIView *)view aboveSubview:(UIView *)siblingSubview;
-
-/**
- *  @brief 显示MaskView
- *  @details 覆盖于下方
- */
--(void)maskViewShowInView:(UIView *)view belowSubview:(UIView *)siblingSubview;
-
-/**
- *  @brief 隐藏MaskView
- */
--(void)maskViewHidden;
-
-/**
- *  @brief MasKView被点击
- */
-- (void)maskViewDidTappedUsingBlock:(void (^)(id sender))sender;
+- (void)didTappedUsingBlock:(void (^)())block;
 
 @end

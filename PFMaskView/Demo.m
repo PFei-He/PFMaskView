@@ -49,7 +49,6 @@
     //覆盖层
     if (!self.maskView) self.maskView = [[PFMaskView alloc] initWithFrame:self.tableView.frame];
     self.maskView.delegate = self;
-    self.maskView.backgroundColor = [UIColor cyanColor];
 /*
     //点击覆盖层
     [self.maskView didTappedUsingBlock:^{

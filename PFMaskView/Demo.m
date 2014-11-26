@@ -100,7 +100,7 @@
 - (void)maskViewDidTapped
 {
     [self.textField resignFirstResponder];
-    [self.maskView hidden];
+    [self.maskView removeFromSuperview];
 }
 //*/
 #pragma mark - Memory Management Methods

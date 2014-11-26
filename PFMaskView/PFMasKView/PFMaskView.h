@@ -30,11 +30,6 @@
 - (void)showInView:(UIView *)view;
 
 /**
- *  @brief 隐藏覆盖层
- */
--(void)hidden;
-
-/**
  *  @brief 覆盖层被点击
  */
 - (void)didTappedUsingBlock:(void (^)())block;

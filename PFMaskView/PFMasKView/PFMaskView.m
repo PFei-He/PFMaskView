@@ -25,25 +25,13 @@ typedef void(^tapBlock)();
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self layoutSubviews:frame];
+        frame.size.height ? (self.frame = frame) : (self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height));
+
+        //点击手势
+        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+        [self addGestureRecognizer:recognizer];
     }
     return self;
-}
-
-#pragma mark - Private Mathods
-
-//设置覆盖层
-- (void)layoutSubviews:(CGRect)frame
-{
-    if (frame.size.height) {
-        self.frame = frame;
-    } else {
-        self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);;
-    }
-
-    //点击手势
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-    [self addGestureRecognizer:recognizer];
 }
 
 #pragma mark - Public Mathods
@@ -51,14 +39,7 @@ typedef void(^tapBlock)();
 //显示覆盖层
 - (void)showInView:(UIView *)view
 {
-    if (!view) [[UIApplication sharedApplication].delegate.window.rootViewController.view addSubview:self];
-    else [view addSubview:self];
-}
-
-//隐藏覆盖层
-- (void)hidden
-{
-    [self removeFromSuperview];
+    view ? [view addSubview:self] : [[UIApplication sharedApplication].delegate.window.rootViewController.view addSubview:self];
 }
 
 //覆盖层被点击

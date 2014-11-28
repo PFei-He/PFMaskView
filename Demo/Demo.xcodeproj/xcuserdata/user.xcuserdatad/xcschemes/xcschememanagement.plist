@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>PFMaskView.xcscheme</key>
+		<key>Demo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>CE2F53C319654E480015FF59</key>
+		<key>CE1B3E941A28681D006DF1B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CE2F53DE19654E480015FF59</key>
+		<key>CE1B3EAF1A28681E006DF1B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

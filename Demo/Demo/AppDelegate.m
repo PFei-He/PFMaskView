@@ -1,13 +1,13 @@
 //
 //  AppDelegate.m
-//  PFMaskView
+//  Demo
 //
-//  Created by PFei_He on 14-7-3.
-//  Copyright (c) 2014年 PFei_He. All rights reserved.
+//  Created by PFei_He on 14-11-28.
+//  Copyright (c) 2014年 PF-Lib. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "Demo.h"
+#import "RootVC.h"
 
 @implementation AppDelegate
 
@@ -16,7 +16,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    Demo *root = [[Demo alloc] init];
+    RootVC *root = [[RootVC alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:root];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];

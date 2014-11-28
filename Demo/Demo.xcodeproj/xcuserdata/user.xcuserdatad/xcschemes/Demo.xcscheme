@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CE2F53C319654E480015FF59"
-               BuildableName = "PFMaskView.app"
-               BlueprintName = "PFMaskView"
-               ReferencedContainer = "container:PFMaskView.xcodeproj">
+               BlueprintIdentifier = "CE1B3E941A28681D006DF1B3"
+               BuildableName = "Demo.app"
+               BlueprintName = "Demo"
+               ReferencedContainer = "container:Demo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,20 +32,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CE2F53DE19654E480015FF59"
-               BuildableName = "PFMaskViewTests.xctest"
-               BlueprintName = "PFMaskViewTests"
-               ReferencedContainer = "container:PFMaskView.xcodeproj">
+               BlueprintIdentifier = "CE1B3EAF1A28681E006DF1B3"
+               BuildableName = "DemoTests.xctest"
+               BlueprintName = "DemoTests"
+               ReferencedContainer = "container:Demo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CE2F53C319654E480015FF59"
-            BuildableName = "PFMaskView.app"
-            BlueprintName = "PFMaskView"
-            ReferencedContainer = "container:PFMaskView.xcodeproj">
+            BlueprintIdentifier = "CE1B3E941A28681D006DF1B3"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
+            ReferencedContainer = "container:Demo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -61,10 +61,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CE2F53C319654E480015FF59"
-            BuildableName = "PFMaskView.app"
-            BlueprintName = "PFMaskView"
-            ReferencedContainer = "container:PFMaskView.xcodeproj">
+            BlueprintIdentifier = "CE1B3E941A28681D006DF1B3"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
+            ReferencedContainer = "container:Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -79,10 +79,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CE2F53C319654E480015FF59"
-            BuildableName = "PFMaskView.app"
-            BlueprintName = "PFMaskView"
-            ReferencedContainer = "container:PFMaskView.xcodeproj">
+            BlueprintIdentifier = "CE1B3E941A28681D006DF1B3"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
+            ReferencedContainer = "container:Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -1,14 +1,14 @@
 //
-//  Demo.m
-//  PFMaskView
+//  RootVC.m
+//  Demo
 //
-//  Created by PFei_He on 14-7-14.
-//  Copyright (c) 2014年 PFei_He. All rights reserved.
+//  Created by PFei_He on 14-11-28.
+//  Copyright (c) 2014年 PF-Lib. All rights reserved.
 //
 
-#import "Demo.h"
+#import "RootVC.h"
 
-@interface Demo ()
+@interface RootVC ()
 
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) UITableView *tableView;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation Demo
+@implementation RootVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,7 +55,7 @@
         [self.textField resignFirstResponder];
         [self.maskView hidden];
     }];
- */
+*/
 }
 
 #pragma mark - UITextFieldDelegate Methods

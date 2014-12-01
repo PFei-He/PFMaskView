@@ -50,8 +50,8 @@ typedef void(^tapBlock)();
         frame.size.height ? (self.frame = frame) : (self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height));
 
         //点击手势
-        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-        [self addGestureRecognizer:recognizer];
+        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+        [self addGestureRecognizer:recognizer]; recognizer = nil;
     }
     return self;
 }
@@ -65,7 +65,7 @@ typedef void(^tapBlock)();
 }
 
 //覆盖层被点击
-- (void)didTappedUsingBlock:(void (^)())block
+- (void)didTappedUsingBlock:(void (^)(void))block
 {
     if (block) self.block = block, block = nil;
 }
@@ -73,7 +73,7 @@ typedef void(^tapBlock)();
 #pragma mark - Events Management
 
 //点击事件
-- (void)tapped:(UIGestureRecognizer *)recognizer
+- (void)tap
 {
     if ([self.delegate respondsToSelector:@selector(maskViewDidTapped)]) {//监听代理并回调
         [self.delegate maskViewDidTapped];
@@ -87,8 +87,7 @@ typedef void(^tapBlock)();
 - (void)dealloc
 {
 #if __has_feature(objc_arc)
-    self.block      = nil;
-    self.delegate   = nil;
+    self.block = nil, self.delegate = nil;
 #else
 #endif
 }

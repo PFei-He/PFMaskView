@@ -54,6 +54,6 @@
 /**
  *  @brief 覆盖层被点击
  */
-- (void)didTappedUsingBlock:(void (^)())block;
+- (void)didTappedUsingBlock:(void (^)(void))block;
 
 @end

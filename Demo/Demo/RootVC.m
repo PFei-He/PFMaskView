@@ -51,9 +51,11 @@
     self.maskView.delegate = self;
 /*
     //点击覆盖层
+    @weakify_self
     [self.maskView didTappedUsingBlock:^{
+        @strongify_self
         [self.textField resignFirstResponder];
-        [self.maskView hidden];
+        [self.maskView removeFromSuperview];
     }];
 */
 }

@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFMaskView
 //
-//  vesion: 0.1.1
+//  vesion: 0.1.2-beta1
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -81,24 +81,5 @@ typedef void(^tapBlock)();
         self.block();
     }
 }
-
-#pragma mark - Memory Management
-
-- (void)dealloc
-{
-#if __has_feature(objc_arc)
-    self.block = nil, self.delegate = nil;
-#else
-#endif
-}
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
